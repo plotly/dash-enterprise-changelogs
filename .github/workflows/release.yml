@@ -1,6 +1,6 @@
 on:
   repository_dispatch:
-    types: [release]
+    types: [enterprise-release]
 
 jobs:
   create_release:
