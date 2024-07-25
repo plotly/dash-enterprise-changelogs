@@ -1,0 +1,19 @@
+on:
+  repository_dispatch:
+    types: [release]
+
+jobs:
+  create_release:
+    name: Publish changelogs from a repo
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Release"
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: release
+          release_name: ${{ github.event.client_payload.name }}
+          body: ${{ github.event.client_payload.body }}
+          draft: false
+          prerelease: false
