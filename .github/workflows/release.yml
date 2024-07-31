@@ -12,7 +12,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: release
+          tag_name: ${{ github.event.client_payload.tag_name }}
           release_name: ${{ github.event.client_payload.name }}
           body: ${{ github.event.client_payload.body }}
           draft: false
